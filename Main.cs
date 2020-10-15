@@ -4,12 +4,12 @@ using Microsoft.Xna.Framework.Input;
 
 namespace top_down_shooter
 {
-    public class Game1 : Game
+    public class Main : Game
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        public Game1()
+        public Main()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -42,11 +42,20 @@ namespace top_down_shooter
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Yellow);
 
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
+        }
+    }
+
+    public static class Program
+    {
+        static void Main()
+        {
+            using (var game = new Main())
+                game.Run();
         }
     }
 }
