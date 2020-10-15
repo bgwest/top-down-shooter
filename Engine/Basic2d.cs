@@ -5,6 +5,8 @@ namespace top_down_shooter
 {
     public class Basic2d
     {
+        public float rotation;
+
         public Vector2 position, dimensions;
 
         public Texture2D myModel;
@@ -24,11 +26,20 @@ namespace top_down_shooter
 
         }
 
-        public virtual void Draw()
+        public virtual void Draw(Vector2 OFFSET)
         {
             if (myModel != null)
             {
-                Globals.spriteBatch.Draw(myModel, new Rectangle((int)(position.X), (int)(position.Y), (int)(dimensions.X), (int)(dimensions.Y)), null, Color.White, 0.0f, new Vector2(myModel.Bounds.Width/2, myModel.Bounds.Height/2), new SpriteEffects(), 0);
+                Globals.spriteBatch.Draw(myModel, new Rectangle((int)(position.X + OFFSET.X), (int)(position.Y + OFFSET.Y), (int)(dimensions.X), (int)(dimensions.Y)), null, Color.White, rotation, new Vector2(myModel.Bounds.Width/2, myModel.Bounds.Height/2), new SpriteEffects(), 0);
+            }
+        }
+
+        // ORIGIN is nice for when you have to draw things outside of the middle
+        public virtual void Draw(Vector2 OFFSET, Vector2 ORIGIN)
+        {
+            if (myModel != null)
+            {
+                Globals.spriteBatch.Draw(myModel, new Rectangle((int)(position.X + OFFSET.X), (int)(position.Y + OFFSET.Y), (int)(dimensions.X), (int)(dimensions.Y)), null, Color.White, rotation, new Vector2(ORIGIN.X, ORIGIN.Y), new SpriteEffects(), 0);
             }
         }
     }

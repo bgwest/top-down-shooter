@@ -35,9 +35,9 @@ namespace top_down_shooter
             base.Update();
         }
 
-        public override void Draw()
+        public override void Draw(Vector2 OFFSET)
         {
-            base.Draw();
+            base.Draw(OFFSET);
         }
     }
 }

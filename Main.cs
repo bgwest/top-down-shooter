@@ -10,11 +10,14 @@ namespace top_down_shooter
 
         World world;
 
+        Basic2d cursor;
+
         public Main()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            IsMouseVisible = true;
+            // enable to use default cursor
+            //IsMouseVisible = true;
         }
 
         protected override void Initialize()
@@ -27,7 +30,10 @@ namespace top_down_shooter
             Globals.content = Content;
             Globals.spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            cursor = new Basic2d("2d/misc/CursorArrow", new Vector2(0, 0), new Vector2(28, 28));
+
             Globals.keyboard = new McKeyboard();
+            Globals.mouse = new McMouseControl();
 
             world = new World();
         }
@@ -38,10 +44,12 @@ namespace top_down_shooter
                 Exit();
 
             Globals.keyboard.Update();
+            Globals.mouse.Update();
 
             world.Update();
 
             Globals.keyboard.UpdateOld();
+            Globals.mouse.UpdateOld();
 
             base.Update(gameTime);
         }
@@ -52,7 +60,9 @@ namespace top_down_shooter
 
             Globals.spriteBatch.Begin();
 
-            world.Draw();
+            world.Draw(Vector2.Zero);
+
+            cursor.Draw(new Vector2 (Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y), new Vector2(0, 0));
 
             Globals.spriteBatch.End();
 
