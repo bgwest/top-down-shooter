@@ -7,7 +7,8 @@ namespace top_down_shooter
     public class Main : Game
     {
         private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+
+        World world;
 
         public Main()
         {
@@ -18,16 +19,17 @@ namespace top_down_shooter
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            Globals.content = Content;
+            Globals.spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            Globals.keyboard = new McKeyboard();
+
+            world = new World();
         }
 
         protected override void Update(GameTime gameTime)
@@ -35,7 +37,11 @@ namespace top_down_shooter
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            Globals.keyboard.Update();
+
+            world.Update();
+
+            Globals.keyboard.UpdateOld();
 
             base.Update(gameTime);
         }
@@ -44,7 +50,11 @@ namespace top_down_shooter
         {
             GraphicsDevice.Clear(Color.Yellow);
 
-            // TODO: Add your drawing code here
+            Globals.spriteBatch.Begin();
+
+            world.Draw();
+
+            Globals.spriteBatch.End();
 
             base.Draw(gameTime);
         }
