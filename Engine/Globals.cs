@@ -1,13 +1,13 @@
-﻿#region Includes
-using System;
+﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
-
 using Microsoft.Xna.Framework.Graphics;
-#endregion
 
 namespace top_down_shooter
 {
+    public delegate void PassObject(object i);
+    public delegate object PassObjectAndReturn(object i);
+
     public class Globals
     {
         public static int screenHeight, screenWidth;
@@ -18,6 +18,8 @@ namespace top_down_shooter
 
         public static McKeyboard keyboard;
         public static McMouseControl mouse;
+
+        public static GameTime gameTime;
 
 
         public static float GetDistance(Vector2 pos, Vector2 target)

@@ -29,5 +29,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GamePlay\World\Units\" />
+    <Folder Include="GamePlay\World\Projectiles\" />
   </ItemGroup>
 </Project>

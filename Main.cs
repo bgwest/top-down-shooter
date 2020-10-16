@@ -22,8 +22,8 @@ namespace top_down_shooter
 
         protected override void Initialize()
         {
-            Globals.screenWidth = 800;
-            Globals.screenHeight = 500;
+            Globals.screenWidth = 800; //1600
+            Globals.screenHeight = 500; //900
 
             _graphics.PreferredBackBufferWidth = Globals.screenWidth;
             _graphics.PreferredBackBufferHeight = Globals.screenHeight;
@@ -51,6 +51,7 @@ namespace top_down_shooter
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            Globals.gameTime = gameTime;
             Globals.keyboard.Update();
             Globals.mouse.Update();
 
