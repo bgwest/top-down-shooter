@@ -2,9 +2,9 @@
 
 namespace top_down_shooter
 {
-    public class Hero : Basic2d
+    public class Hero : Unit
     {
-        public float speed;
+        //public float speed;
 
         public Hero(string PATH, Vector2 POSITION, Vector2 DIMENSIONS) :base(PATH, POSITION, DIMENSIONS)
         {
