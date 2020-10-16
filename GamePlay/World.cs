@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Xna.Framework;
 
 namespace top_down_shooter
@@ -8,6 +9,7 @@ namespace top_down_shooter
         public Hero hero;
 
         public List<Projectile2d> projectiles = new List<Projectile2d>();
+        public List<Mob> mobs = new List<Mob>();
 
         public Vector2 offset;
 
@@ -16,17 +18,18 @@ namespace top_down_shooter
             hero = new Hero("2d/Hero", new Vector2(300, 300), new Vector2(48, 48));
 
             GameGlobals.PassProjectile = AddProjectile;
+            GameGlobals.PassMob = AddMob;
 
             offset = new Vector2(0, 0);
         }
 
         public virtual void Update()
         {
-            hero.Update();
+            hero.Update(offset);
 
             for(int i = 0; i < projectiles.Count; i++)
             {
-                projectiles[i].Update(offset, null);
+                projectiles[i].Update(offset, mobs.ToList<Unit>());
 
                 if (projectiles[i].done)
                 {
@@ -34,6 +37,22 @@ namespace top_down_shooter
                     i--;
                 }
             }
+
+            for (int i = 0; i < mobs.Count; i++)
+            {
+                mobs[i].Update(offset);
+
+                if (mobs[i].dead)
+                {
+                    mobs.RemoveAt(i);
+                    i--;
+                }
+            }
+        }
+
+        public virtual void AddMob(object INFO)
+        {
+            mobs.Add((Mob)INFO);
         }
 
         public virtual void AddProjectile(object INFO)

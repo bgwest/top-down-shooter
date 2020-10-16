@@ -4,14 +4,12 @@ namespace top_down_shooter
 {
     public class Hero : Unit
     {
-        //public float speed;
-
         public Hero(string PATH, Vector2 POSITION, Vector2 DIMENSIONS) :base(PATH, POSITION, DIMENSIONS)
         {
             speed = 2.0f;
         }
 
-        public override void Update()
+        public override void Update(Vector2 OFFSET)
         {
             // MUST USE IF/ELSE if you want to prevent diagomal movement
             if (Globals.keyboard.GetPress("X"))
@@ -43,7 +41,7 @@ namespace top_down_shooter
                 GameGlobals.PassProjectile(new Fireball(new Vector2(position.X, position.Y), this, new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y)));
             }
 
-            base.Update();
+            base.Update(OFFSET);
         }
 
         public override void Draw(Vector2 OFFSET)
