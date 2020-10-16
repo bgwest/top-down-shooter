@@ -28,7 +28,7 @@ namespace top_down_shooter
 
         public static float RotateTowards(Vector2 Pos, Vector2 focus)
         {
-
+            // sohcahtoa
             float h, sineTheta, angle;
             if(Pos.Y-focus.Y != 0)
             {
