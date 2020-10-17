@@ -46,7 +46,22 @@ namespace top_down_shooter
 
         public virtual void AddUnit(object INFO)
         {
+            // consider this codeblock for saftey if bugs are happening frequently.
+            //Unit tempUnit = (Unit)INFO;
+            //tempUnit.ownerId = id;
+            //units.Add(tempUnit);
+
             units.Add((Unit)INFO);
+        }
+
+        public virtual void AddSpawnPoint(object INFO)
+        {
+            // consider this codeblock for saftey if bugs are happening frequently.
+            //SpawnPoint tempSpawnPoint = (SpawnPoint)INFO;
+            //tempSpawnPoint.ownerId = id;
+            //spawnPoints.Add(tempSpawnPoint);
+
+            spawnPoints.Add((SpawnPoint)INFO);
         }
 
         public virtual void ChangeScore(int SCORE)

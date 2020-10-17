@@ -26,6 +26,7 @@ namespace top_down_shooter
 
             GameGlobals.PassProjectile = AddProjectile;
             GameGlobals.PassMob = AddMob;
+            GameGlobals.PassSpawnPoint = AddSpawnPoint;
             GameGlobals.CheckScroll = CheckScroll;
 
             worldOffset = new Vector2(0, 0);
@@ -68,12 +69,43 @@ namespace top_down_shooter
 
         public virtual void AddMob(object INFO)
         {
+            Unit tempUnit = (Unit)INFO;
+
+            // this system would be atrocious if we had MANY players
+            // but since this will likely be 1-2 player game, this is fine
+            if (user.id == tempUnit.ownerId)
+            {
+                user.AddUnit(tempUnit);
+            }
+            else if (aiPlayer.id == tempUnit.ownerId)
+            {
+                aiPlayer.AddUnit(tempUnit);
+            }
+
             aiPlayer.AddUnit((Mob)INFO);
         }
 
         public virtual void AddProjectile(object INFO)
         {
             projectiles.Add((Projectile2d)INFO);
+        }
+
+        public virtual void AddSpawnPoint(object INFO)
+        {
+            SpawnPoint tempSpawnPoint = (SpawnPoint)INFO;
+
+            // this system would be atrocious if we had MANY players
+            // but since this will likely be 1-2 player game, this is fine
+            if (user.id == tempSpawnPoint.ownerId)
+            {
+                user.AddSpawnPoint(tempSpawnPoint);
+            }
+            else if (aiPlayer.id == tempSpawnPoint.ownerId)
+            {
+                aiPlayer.AddSpawnPoint(tempSpawnPoint);
+            }
+
+            aiPlayer.AddUnit((Mob)INFO);
         }
 
         public virtual void CheckScroll(object INFO)
