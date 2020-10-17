@@ -28,9 +28,10 @@
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.0.1641" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="GamePlay\World\Units\" />
-    <Folder Include="GamePlay\World\Projectiles\" />
-    <Folder Include="GamePlay\World\Units\Mobs\" />
     <Folder Include="Source\" />
+    <Folder Include="Source\Engine\" />
+    <Folder Include="Source\GamePlay\" />
+    <Folder Include="Source\Engine\Output\" />
+    <Folder Include="Source\GamePlay\World\Players\" />
   </ItemGroup>
 </Project>

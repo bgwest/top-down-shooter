@@ -35,11 +35,11 @@ namespace top_down_shooter
         }
 
         // ORIGIN is nice for when you have to draw things outside of the middle
-        public virtual void Draw(Vector2 OFFSET, Vector2 ORIGIN)
+        public virtual void Draw(Vector2 OFFSET, Vector2 ORIGIN, Color COLOR)
         {
             if (myModel != null)
             {
-                Globals.spriteBatch.Draw(myModel, new Rectangle((int)(position.X + OFFSET.X), (int)(position.Y + OFFSET.Y), (int)(dimensions.X), (int)(dimensions.Y)), null, Color.White, rotation, new Vector2(ORIGIN.X, ORIGIN.Y), new SpriteEffects(), 0);
+                Globals.spriteBatch.Draw(myModel, new Rectangle((int)(position.X + OFFSET.X), (int)(position.Y + OFFSET.Y), (int)(dimensions.X), (int)(dimensions.Y)), null, COLOR, rotation, new Vector2(ORIGIN.X, ORIGIN.Y), new SpriteEffects(), 0);
             }
         }
     }

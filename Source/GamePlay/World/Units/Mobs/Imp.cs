@@ -9,9 +9,9 @@ namespace top_down_shooter
             speed = 2.0f;
         }
 
-        public override void Update(Vector2 OFFSET, Hero HERO)
+        public override void Update(Vector2 OFFSET, Player ENEMY)
         {
-            base.Update(OFFSET, HERO);
+            base.Update(OFFSET, ENEMY);
         }
 
         public override void Draw(Vector2 OFFSET)

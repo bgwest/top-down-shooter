@@ -8,7 +8,7 @@ namespace top_down_shooter
     {
         private GraphicsDeviceManager _graphics;
 
-        World world;
+        GamePlay gamePlay;
 
         Basic2d cursor;
 
@@ -43,7 +43,7 @@ namespace top_down_shooter
             Globals.keyboard = new McKeyboard();
             Globals.mouse = new McMouseControl();
 
-            world = new World();
+            gamePlay = new GamePlay();
         }
 
         protected override void Update(GameTime gameTime)
@@ -55,7 +55,7 @@ namespace top_down_shooter
             Globals.keyboard.Update();
             Globals.mouse.Update();
 
-            world.Update();
+            gamePlay.Update();
 
             Globals.keyboard.UpdateOld();
             Globals.mouse.UpdateOld();
@@ -69,9 +69,9 @@ namespace top_down_shooter
 
             Globals.spriteBatch.Begin();
 
-            world.Draw(Vector2.Zero);
+            gamePlay.Draw();
 
-            cursor.Draw(new Vector2 (Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y), new Vector2(0, 0));
+            cursor.Draw(new Vector2 (Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y), new Vector2(0, 0), Color.White);
 
             Globals.spriteBatch.End();
 
