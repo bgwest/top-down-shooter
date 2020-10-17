@@ -4,7 +4,8 @@ namespace top_down_shooter
 {
     public class Imp : Mob
     {
-        public Imp(Vector2 POSITION) :base("2d/Units/Mobs/Imp", POSITION, new Vector2(40, 40))
+        public Imp(Vector2 POSITION, int OWNER_ID)
+            :base("2d/Units/Mobs/Imp", POSITION, new Vector2(40, 40), OWNER_ID)
         {
             speed = 2.0f;
         }

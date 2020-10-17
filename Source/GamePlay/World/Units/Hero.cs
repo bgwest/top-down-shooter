@@ -4,7 +4,8 @@ namespace top_down_shooter
 {
     public class Hero : Unit
     {
-        public Hero(string PATH, Vector2 POSITION, Vector2 DIMENSIONS) :base(PATH, POSITION, DIMENSIONS)
+        public Hero(string PATH, Vector2 POSITION, Vector2 DIMENSIONS, int OWNER_ID)
+            :base(PATH, POSITION, DIMENSIONS, OWNER_ID)
         {
             speed = 2.0f;
 

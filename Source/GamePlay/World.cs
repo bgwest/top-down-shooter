@@ -21,8 +21,8 @@ namespace top_down_shooter
         {
             PassResetWorld = RESET_WORLD;
 
-            user = new User();
-            aiPlayer = new AIPlayer();
+            user = new User(1);
+            aiPlayer = new AIPlayer(2);
 
             GameGlobals.PassProjectile = AddProjectile;
             GameGlobals.PassMob = AddMob;

@@ -5,13 +5,15 @@ namespace top_down_shooter
 {
     public class Player
     {
+        public int id;
         // later will probably end up making this a List
         public Hero hero;
         public List<Unit> units = new List<Unit>();
         public List<SpawnPoint> spawnPoints = new List<SpawnPoint>();
 
-        public Player()
+        public Player(int ID)
         {
+            id = ID;
         }
 
         public virtual void Update(Player ENEMY, Vector2 OFFSET)
