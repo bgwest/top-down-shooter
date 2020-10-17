@@ -18,8 +18,12 @@ namespace top_down_shooter
 
         public int killCount;
 
-        public World()
+        PassObject PassResetWorld;
+
+        public World(PassObject RESET_WORLD)
         {
+            PassResetWorld = RESET_WORLD;
+
             hero = new Hero("2d/Hero", new Vector2(300, 300), new Vector2(48, 48));
 
             GameGlobals.PassProjectile = AddProjectile;
@@ -43,34 +47,45 @@ namespace top_down_shooter
 
         public virtual void Update()
         {
-            hero.Update(worldOffset);
 
-            for (int i = 0; i < spawnPoints.Count; i++)
+            if (!hero.dead)
             {
-                spawnPoints[i].Update(worldOffset);
-            }
+                hero.Update(worldOffset);
 
-            for (int i = 0; i < projectiles.Count; i++)
-            {
-                projectiles[i].Update(worldOffset, mobs.ToList<Unit>());
-
-                if (projectiles[i].done)
+                for (int i = 0; i < spawnPoints.Count; i++)
                 {
-                    projectiles.RemoveAt(i);
-                    i--;
+                    spawnPoints[i].Update(worldOffset);
+                }
+
+                for (int i = 0; i < projectiles.Count; i++)
+                {
+                    projectiles[i].Update(worldOffset, mobs.ToList<Unit>());
+
+                    if (projectiles[i].done)
+                    {
+                        projectiles.RemoveAt(i);
+                        i--;
+                    }
+                }
+
+                for (int i = 0; i < mobs.Count; i++)
+                {
+                    mobs[i].Update(worldOffset, hero);
+
+                    if (mobs[i].dead)
+                    {
+                        // in future killCount should be tightly coupled with a "death animation" 
+                        killCount++;
+                        mobs.RemoveAt(i);
+                        i--;
+                    }
                 }
             }
-
-            for (int i = 0; i < mobs.Count; i++)
+            else
             {
-                mobs[i].Update(worldOffset, hero);
-
-                if (mobs[i].dead)
+                if (Globals.keyboard.GetPress("Enter"))
                 {
-                    // in future killCount should be tightly coupled with a "death animation" 
-                    killCount++;
-                    mobs.RemoveAt(i);
-                    i--;
+                    PassResetWorld(null);
                 }
             }
 

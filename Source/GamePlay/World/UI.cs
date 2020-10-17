@@ -31,6 +31,13 @@ namespace top_down_shooter
             Globals.spriteBatch.DrawString(font, tempString, new Vector2(Globals.screenWidth / 2 - stringDimensions.X / 2, Globals.screenHeight - 40), Color.Black);
 
             healthBar.Draw(new Vector2(20, Globals.screenHeight - 40));
+
+            if (WORLD.hero.dead)
+            {
+                tempString = "Press Enter to Restart";
+                stringDimensions = font.MeasureString(tempString);
+                Globals.spriteBatch.DrawString(font, tempString, new Vector2(Globals.screenWidth / 2 - stringDimensions.X / 2, Globals.screenHeight / 2), Color.Black);
+            }
         }
     }
 }
