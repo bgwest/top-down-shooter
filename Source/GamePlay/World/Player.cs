@@ -23,6 +23,18 @@ namespace top_down_shooter
               hero.Update(OFFSET);
             }
 
+            // could be used as a skill to aid the player like "spawn box with mechs"
+            for (int i = 0; i < spawnPoints.Count; i++)
+            {
+                spawnPoints[i].Update(OFFSET);
+
+                if (spawnPoints[i].dead)
+                {
+                    spawnPoints.RemoveAt(i);
+                    i--;
+                }
+            }
+
             for (int i = 0; i < units.Count; i++)
             {
                 units[i].Update(OFFSET, ENEMY);
@@ -34,12 +46,6 @@ namespace top_down_shooter
                     units.RemoveAt(i);
                     i--;
                 }
-            }
-
-            // could be used as a skill to aid the player like "spawn box with mechs"
-            for (int i = 0; i < spawnPoints.Count; i++)
-            {
-                spawnPoints[i].Update(OFFSET);
             }
 
         }

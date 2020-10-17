@@ -104,8 +104,6 @@ namespace top_down_shooter
             {
                 aiPlayer.AddSpawnPoint(tempSpawnPoint);
             }
-
-            aiPlayer.AddUnit((Mob)INFO);
         }
 
         public virtual void CheckScroll(object INFO)
