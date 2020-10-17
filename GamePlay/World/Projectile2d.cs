@@ -50,6 +50,15 @@ namespace top_down_shooter
 
         public virtual bool HitSomething(List<Unit> UNITS)
         {
+            for (int i = 0; i < UNITS.Count; i++)
+            {
+                if (Globals.GetDistance(position, UNITS[i].position) < UNITS[i].hitDist)
+                {
+                    UNITS[i].GetHit();
+                    return true;
+                }
+            }
+
             return false;
         }
 

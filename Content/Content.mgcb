@@ -13,6 +13,69 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin 2d/Fonts/Arial16.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:2d/Fonts/Arial16.spritefont
+
+#begin 2d/Fonts/Arial20Bold.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:2d/Fonts/Arial20Bold.spritefont
+
+#begin 2d/Fonts/Arial24.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:2d/Fonts/Arial24.spritefont
+
+#begin 2d/Fonts/Lindsey13.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:2d/Fonts/Lindsey13.spritefont
+
+#begin 2d/Fonts/Lindsey15.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:2d/Fonts/Lindsey15.spritefont
+
+#begin 2d/Fonts/Lindsey16.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:2d/Fonts/Lindsey16.spritefont
+
+#begin 2d/Fonts/Lindsey17.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:2d/Fonts/Lindsey17.spritefont
+
+#begin 2d/Fonts/Lindsey18.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:2d/Fonts/Lindsey18.spritefont
+
+#begin 2d/Fonts/Lindsey20.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:2d/Fonts/Lindsey20.spritefont
+
 #begin 2d/Hero.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -24,6 +87,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:2d/Hero.png
+
+#begin 2d/misc/circle.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:2d/misc/circle.png
 
 #begin 2d/misc/CursorArrow.png
 /importer:TextureImporter
@@ -48,4 +123,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:2d/Projectiles/Fireball.png
+
+#begin 2d/Units/Mobs/Imp.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:2d/Units/Mobs/Imp.png
 
