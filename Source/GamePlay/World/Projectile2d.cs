@@ -54,7 +54,8 @@ namespace top_down_shooter
             {
                 if (Globals.GetDistance(position, UNITS[i].position) < UNITS[i].hitDist)
                 {
-                    UNITS[i].GetHit();
+                    // 1 damage is good enough for now
+                    UNITS[i].GetHit(1);
                     return true;
                 }
             }

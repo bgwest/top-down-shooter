@@ -20,6 +20,13 @@ namespace top_down_shooter
         {
             position += Globals.RadialMovement(HERO.position, position, speed);
             rotation = Globals.RotateTowards(position, HERO.position);
+
+            // bounding boxes will come later, good enough for now
+            if (Globals.GetDistance(position, HERO.position) < 15)
+            {
+                HERO.GetHit(1);
+                dead = true;
+            }
         }
 
         public override void Draw(Vector2 OFFSET)

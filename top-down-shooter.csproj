@@ -31,5 +31,6 @@
     <Folder Include="Source\" />
     <Folder Include="Source\Engine\" />
     <Folder Include="Source\GamePlay\" />
+    <Folder Include="Source\Engine\Output\" />
   </ItemGroup>
 </Project>

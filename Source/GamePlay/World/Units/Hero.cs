@@ -7,6 +7,9 @@ namespace top_down_shooter
         public Hero(string PATH, Vector2 POSITION, Vector2 DIMENSIONS) :base(PATH, POSITION, DIMENSIONS)
         {
             speed = 2.0f;
+
+            health = 5;
+            healthMax = health;
         }
 
         public override void Update(Vector2 OFFSET)
