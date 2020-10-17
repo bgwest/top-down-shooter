@@ -22,8 +22,8 @@ namespace top_down_shooter
 
         protected override void Initialize()
         {
-            Globals.screenWidth = 800; //1600
-            Globals.screenHeight = 500; //900
+            Globals.screenWidth = 1600;
+            Globals.screenHeight = 900;
 
             _graphics.PreferredBackBufferWidth = Globals.screenWidth;
             _graphics.PreferredBackBufferHeight = Globals.screenHeight;

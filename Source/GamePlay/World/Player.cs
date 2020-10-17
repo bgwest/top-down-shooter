@@ -5,13 +5,15 @@ namespace top_down_shooter
 {
     public class Player
     {
+        public int id;
         // later will probably end up making this a List
         public Hero hero;
         public List<Unit> units = new List<Unit>();
         public List<SpawnPoint> spawnPoints = new List<SpawnPoint>();
 
-        public Player()
+        public Player(int ID)
         {
+            id = ID;
         }
 
         public virtual void Update(Player ENEMY, Vector2 OFFSET)
@@ -19,6 +21,18 @@ namespace top_down_shooter
             if (hero != null)
             {
               hero.Update(OFFSET);
+            }
+
+            // could be used as a skill to aid the player like "spawn box with mechs"
+            for (int i = 0; i < spawnPoints.Count; i++)
+            {
+                spawnPoints[i].Update(OFFSET);
+
+                if (spawnPoints[i].dead)
+                {
+                    spawnPoints.RemoveAt(i);
+                    i--;
+                }
             }
 
             for (int i = 0; i < units.Count; i++)
@@ -34,17 +48,26 @@ namespace top_down_shooter
                 }
             }
 
-            // could be used as a skill to aid the player like "spawn box with mechs"
-            for (int i = 0; i < spawnPoints.Count; i++)
-            {
-                spawnPoints[i].Update(OFFSET);
-            }
-
         }
 
         public virtual void AddUnit(object INFO)
         {
+            // consider this codeblock for saftey if bugs are happening frequently.
+            //Unit tempUnit = (Unit)INFO;
+            //tempUnit.ownerId = id;
+            //units.Add(tempUnit);
+
             units.Add((Unit)INFO);
+        }
+
+        public virtual void AddSpawnPoint(object INFO)
+        {
+            // consider this codeblock for saftey if bugs are happening frequently.
+            //SpawnPoint tempSpawnPoint = (SpawnPoint)INFO;
+            //tempSpawnPoint.ownerId = id;
+            //spawnPoints.Add(tempSpawnPoint);
+
+            spawnPoints.Add((SpawnPoint)INFO);
         }
 
         public virtual void ChangeScore(int SCORE)

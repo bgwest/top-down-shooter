@@ -2,12 +2,14 @@
 
 namespace top_down_shooter
 {
-    public class Imp : Mob
+    public class Spiderling : Mob
     {
-        public Imp(Vector2 POSITION, int OWNER_ID)
-            :base("2d/Units/Mobs/Imp", POSITION, new Vector2(40, 40), OWNER_ID)
+        public McTimer spawnTimer;
+
+        public Spiderling(Vector2 POSITION, int OWNER_ID)
+            :base("2d/Units/Mobs/Spider", POSITION, new Vector2(25, 25), OWNER_ID)
         {
-            speed = 2.0f;
+            speed = 1.0f;
         }
 
         public override void Update(Vector2 OFFSET, Player ENEMY)
