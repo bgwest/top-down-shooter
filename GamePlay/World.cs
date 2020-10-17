@@ -8,11 +8,15 @@ namespace top_down_shooter
     {
         public Hero hero;
 
+        public UI ui;
+
         public List<Projectile2d> projectiles = new List<Projectile2d>();
         public List<Mob> mobs = new List<Mob>();
         public List<SpawnPoint> spawnPoints = new List<SpawnPoint>();
 
         public Vector2 offset;
+
+        public int killCount;
 
         public World()
         {
@@ -23,6 +27,8 @@ namespace top_down_shooter
 
             offset = new Vector2(0, 0);
 
+            killCount = 0;
+
             spawnPoints.Add(new SpawnPoint("2d/misc/circle", new Vector2(50,50), new Vector2(35,35)));
 
             spawnPoints.Add(new SpawnPoint("2d/misc/circle", new Vector2(Globals.screenWidth / 2, 50), new Vector2(35,35)));
@@ -30,6 +36,8 @@ namespace top_down_shooter
 
             spawnPoints.Add(new SpawnPoint("2d/misc/circle", new Vector2(Globals.screenWidth - 50, 50), new Vector2(35,35)));
             spawnPoints[spawnPoints.Count - 1].spawnTimer.AddToTimer(1000);
+
+            ui = new UI();
         }
 
         public virtual void Update()
@@ -58,10 +66,15 @@ namespace top_down_shooter
 
                 if (mobs[i].dead)
                 {
+                    // in future killCount should be tightly coupled with a "death animation" 
+                    killCount++;
                     mobs.RemoveAt(i);
                     i--;
                 }
             }
+
+            // important for ui to be at the bottom
+            ui.Update(this);
         }
 
         public virtual void AddMob(object INFO)
@@ -93,6 +106,8 @@ namespace top_down_shooter
                 mobs[i].Draw(offset);
             }
 
+            // important for ui to be at the bottom
+            ui.Draw(this);
         }
     }
 }
