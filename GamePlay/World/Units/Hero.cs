@@ -11,34 +11,47 @@ namespace top_down_shooter
 
         public override void Update(Vector2 OFFSET)
         {
+            // a camera would be a better option but also more complicated
+            // might consider using monogame extendends camera or using this for now is fine
+            bool checkScroll = false;
+
             // MUST USE IF/ELSE if you want to prevent diagomal movement
-            if (Globals.keyboard.GetPress("X"))
+            if (Globals.keyboard.GetPress("A"))
             {
                 position = new Vector2(position.X - speed, position.Y);
-            }
-
-            if (Globals.keyboard.GetPress("V"))
-            {
-                position = new Vector2(position.X + speed, position.Y);
+                checkScroll = true;
             }
 
             if (Globals.keyboard.GetPress("D"))
             {
-                position = new Vector2(position.X, position.Y - speed);
+                position = new Vector2(position.X + speed, position.Y);
+                checkScroll = true;
             }
 
-            if (Globals.keyboard.GetPress("C"))
+            if (Globals.keyboard.GetPress("W"))
+            {
+                position = new Vector2(position.X, position.Y - speed);
+                checkScroll = true;
+            }
+
+            if (Globals.keyboard.GetPress("S"))
             {
                 position = new Vector2(position.X, position.Y + speed);
+                checkScroll = true;
+            }
+
+            if (checkScroll)
+            {
+                GameGlobals.CheckScroll(position);
             }
 
             // rotate hero towards the mouse
-            rotation = Globals.RotateTowards(position, new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y));
+            rotation = Globals.RotateTowards(position, new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y) - OFFSET);
 
             if (Globals.mouse.LeftClick())
             {
                 // creating a new Vector2 ensures are updating a new piece of memory and not the same as our heros
-                GameGlobals.PassProjectile(new Fireball(new Vector2(position.X, position.Y), this, new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y)));
+                GameGlobals.PassProjectile(new Fireball(new Vector2(position.X, position.Y), this, new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y) - OFFSET));
             }
 
             base.Update(OFFSET);

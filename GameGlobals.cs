@@ -8,6 +8,6 @@
         {
         }
 
-        public static PassObject PassProjectile, PassMob;
+        public static PassObject PassProjectile, PassMob, CheckScroll;
     }
 }

@@ -24,6 +24,7 @@ namespace top_down_shooter
 
             GameGlobals.PassProjectile = AddProjectile;
             GameGlobals.PassMob = AddMob;
+            GameGlobals.CheckScroll = CheckScroll;
 
             worldOffset = new Vector2(0, 0);
 
@@ -85,6 +86,31 @@ namespace top_down_shooter
         public virtual void AddProjectile(object INFO)
         {
             projectiles.Add((Projectile2d)INFO);
+        }
+
+        public virtual void CheckScroll(object INFO)
+        {
+            Vector2 tempPosition = (Vector2)INFO;
+
+            if (tempPosition.X < -worldOffset.X + (Globals.screenWidth * .4f))
+            {
+                worldOffset = new Vector2(worldOffset.X + hero.speed * 2, worldOffset.Y);
+            }
+
+            if (tempPosition.X > -worldOffset.X + (Globals.screenWidth * .6f))
+            {
+                worldOffset = new Vector2(worldOffset.X - hero.speed * 2, worldOffset.Y);
+            }
+
+            if (tempPosition.Y < -worldOffset.Y + (Globals.screenHeight * .4f))
+            {
+                worldOffset = new Vector2(worldOffset.X, worldOffset.Y + hero.speed * 2);
+            }
+
+            if (tempPosition.Y > -worldOffset.Y + (Globals.screenHeight * .6f))
+            {
+                worldOffset = new Vector2(worldOffset.X, worldOffset.Y - hero.speed * 2);
+            }
         }
 
         public virtual void Draw(Vector2 MAIN_OFFSET)
