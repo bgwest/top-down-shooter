@@ -14,7 +14,7 @@ namespace top_down_shooter
         public List<Mob> mobs = new List<Mob>();
         public List<SpawnPoint> spawnPoints = new List<SpawnPoint>();
 
-        public Vector2 offset;
+        public Vector2 worldOffset;
 
         public int killCount;
 
@@ -25,7 +25,7 @@ namespace top_down_shooter
             GameGlobals.PassProjectile = AddProjectile;
             GameGlobals.PassMob = AddMob;
 
-            offset = new Vector2(0, 0);
+            worldOffset = new Vector2(0, 0);
 
             killCount = 0;
 
@@ -42,16 +42,16 @@ namespace top_down_shooter
 
         public virtual void Update()
         {
-            hero.Update(offset);
+            hero.Update(worldOffset);
 
             for (int i = 0; i < spawnPoints.Count; i++)
             {
-                spawnPoints[i].Update(offset);
+                spawnPoints[i].Update(worldOffset);
             }
 
             for (int i = 0; i < projectiles.Count; i++)
             {
-                projectiles[i].Update(offset, mobs.ToList<Unit>());
+                projectiles[i].Update(worldOffset, mobs.ToList<Unit>());
 
                 if (projectiles[i].done)
                 {
@@ -62,7 +62,7 @@ namespace top_down_shooter
 
             for (int i = 0; i < mobs.Count; i++)
             {
-                mobs[i].Update(offset, hero);
+                mobs[i].Update(worldOffset, hero);
 
                 if (mobs[i].dead)
                 {
@@ -87,23 +87,23 @@ namespace top_down_shooter
             projectiles.Add((Projectile2d)INFO);
         }
 
-        public virtual void Draw(Vector2 OFFSET)
+        public virtual void Draw(Vector2 MAIN_OFFSET)
         {
-            hero.Draw(OFFSET);
+            hero.Draw(worldOffset);
 
             for (int i = 0; i < projectiles.Count; i++)
             {
-                projectiles[i].Draw(offset);
+                projectiles[i].Draw(worldOffset);
             }
 
             for (int i = 0; i < spawnPoints.Count; i++)
             {
-                spawnPoints[i].Draw(offset);
+                spawnPoints[i].Draw(worldOffset);
             }
 
             for (int i = 0; i < mobs.Count; i++)
             {
-                mobs[i].Draw(offset);
+                mobs[i].Draw(worldOffset);
             }
 
             // important for ui to be at the bottom
