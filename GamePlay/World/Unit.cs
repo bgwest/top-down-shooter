@@ -23,6 +23,11 @@ namespace top_down_shooter
             base.Update(OFFSET);
         }
 
+        public virtual void GetHit()
+        {
+            dead = true;
+        }
+
         public override void Draw(Vector2 OFFSET)
         {
             base.Draw(OFFSET);

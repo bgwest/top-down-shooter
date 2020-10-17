@@ -30,5 +30,7 @@
   <ItemGroup>
     <Folder Include="GamePlay\World\Units\" />
     <Folder Include="GamePlay\World\Projectiles\" />
+    <Folder Include="GamePlay\World\Units\Mobs\" />
+    <Folder Include="Source\" />
   </ItemGroup>
 </Project>

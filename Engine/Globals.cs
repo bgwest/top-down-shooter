@@ -27,6 +27,20 @@ namespace top_down_shooter
             return (float)Math.Sqrt(Math.Pow(pos.X - target.X, 2) + Math.Pow(pos.Y - target.Y, 2));
         }
 
+        public static Vector2 RadialMovement(Vector2 focus, Vector2 position, float speed)
+        {
+            float distance = Globals.GetDistance(position, focus);
+
+            if (distance <= speed)
+            {
+                return focus - position;
+            }
+            else
+            {
+                return (focus - position) * speed / distance;
+            }
+        }
+
 
         public static float RotateTowards(Vector2 Pos, Vector2 focus)
         {

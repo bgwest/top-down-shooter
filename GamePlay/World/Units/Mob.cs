@@ -9,16 +9,17 @@ namespace top_down_shooter
             speed = 2.0f;
         }
 
-        public override void Update(Vector2 OFFSET)
+        public virtual void Update(Vector2 OFFSET, Hero HERO)
         {
-            AI();
+            AI(HERO);
 
             base.Update(OFFSET);
         }
 
-        public virtual void AI()
+        public virtual void AI(Hero HERO)
         {
-
+            position += Globals.RadialMovement(HERO.position, position, speed);
+            rotation = Globals.RotateTowards(position, HERO.position);
         }
 
         public override void Draw(Vector2 OFFSET)
