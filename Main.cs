@@ -40,6 +40,10 @@ namespace top_down_shooter
 
             cursor = new Basic2d("2d/misc/CursorArrow", new Vector2(0, 0), new Vector2(28, 28));
 
+            // TODO: Shader needs to be re-processed in order to run on this version of monogame
+            //       uncomment and try running after-reprocessing
+            //Globals.normalEffect = Globals.content.Load<Effect>("2d/Effects/Normal");
+
             Globals.keyboard = new McKeyboard();
             Globals.mouse = new McMouseControl();
 
@@ -67,7 +71,11 @@ namespace top_down_shooter
         {
             GraphicsDevice.Clear(Color.Yellow);
 
-            Globals.spriteBatch.Begin();
+            // TODO: Shader needs to be re-processed in order to run on this version of monogame
+            //       switch back to SpriteSortMode.Immediate after re-processing to try
+            // if your not running a shader program, SpriteSortMode.Deferred is pretty much the best
+            // drawing all sprites immediately is slightly less efficient, but it allows us to test our anti-aliasing
+            Globals.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
 
             gamePlay.Draw();
 

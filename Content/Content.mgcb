@@ -10,6 +10,8 @@
 
 #-------------------------------- References --------------------------------#
 
+/reference:../../../../../.nuget/packages/infinitespacestudios.pipeline/1.0.9/tools/InfinitespaceStudios.Pipeline.dll
+/reference:../../../../../.nuget/packages/infinitespacestudios.pipeline/1.0.9/tools/Newtonsoft.Json.dll
 
 #---------------------------------- Content ---------------------------------#
 
@@ -171,6 +173,11 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:2d/Projectiles/Fireball.png
+
+#begin 2d/Shaders/NormalFlat.fx
+/importer:EffectImporter
+/processor:PassThroughProcessor
+/build:2d/Shaders/NormalFlat.fx
 
 #begin 2d/SpawnPoints/EggSac.png
 /importer:TextureImporter

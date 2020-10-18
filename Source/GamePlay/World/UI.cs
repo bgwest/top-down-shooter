@@ -26,6 +26,16 @@ namespace top_down_shooter
 
         public void Draw(World WORLD)
         {
+            // TODO: Shader needs to be re-processed in order to run on this version of monogame
+            //       uncomment and try running after-reprocessing
+            // since text needs to be pixel for pixel we override the shader loop and say "don't skip any pixels" basically
+            //Globals.normalEffect.Parameters["xSize"].SetValue(1.0f);
+            //Globals.normalEffect.Parameters["ySize"].SetValue(1.0f);
+            //Globals.normalEffect.Parameters["xDraw"].SetValue(1.0f);
+            //Globals.normalEffect.Parameters["yDraw"].SetValue(1.0f);
+            //Globals.normalEffect.Parameters["filterColor"].SetValue(Color.White.ToVector4());
+            //Globals.normalEffect.CurrentTechnique.Passes[0].Apply();
+
             string tempString = "Score: " + GameGlobals.score;
             Vector2 stringDimensions = font.MeasureString(tempString);
             Globals.spriteBatch.DrawString(font, tempString, new Vector2(Globals.screenWidth / 2 - stringDimensions.X / 2, Globals.screenHeight - 40), Color.Black);

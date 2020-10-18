@@ -15,8 +15,15 @@ namespace top_down_shooter
         public static Random random = new Random();
 
         public static ContentManager content;
+        // typically there is 3 or 4 spriteBatch runs in a final game:
+        // 1 for the UI, 1 for all things not using a shader, 1 for drawing stuff using the shader
+        // and then one that runs off a render object that can do some hooks processing (if needed)
+        // it's very expensive to open and close sprite batches so important to think that through
         public static SpriteBatch spriteBatch;
 
+        // TODO: Shader needs to be re-processed in order to run on this version of monogame
+        //       uncomment and try running after-reprocessing
+        //public static Effect normalEffect;
 
         public static McKeyboard keyboard;
         public static McMouseControl mouse;
