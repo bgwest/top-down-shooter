@@ -14,6 +14,8 @@ namespace top_down_shooter
 
         public static Random random = new Random();
 
+        public static System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("en-US");
+
         public static ContentManager content;
         // typically there is 3 or 4 spriteBatch runs in a final game:
         // 1 for the UI, 1 for all things not using a shader, 1 for drawing stuff using the shader

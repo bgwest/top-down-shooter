@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 using Microsoft.Xna.Framework;
 
 namespace top_down_shooter
@@ -22,15 +23,14 @@ namespace top_down_shooter
         {
             PassResetWorld = RESET_WORLD;
 
-            user = new User(1);
-            aiPlayer = new AIPlayer(2);
-
             GameGlobals.PassProjectile = AddProjectile;
             GameGlobals.PassMob = AddMob;
             GameGlobals.PassSpawnPoint = AddSpawnPoint;
             GameGlobals.CheckScroll = CheckScroll;
 
             worldOffset = new Vector2(0, 0);
+
+            LoadData(1);
 
             ui = new UI();
         }
@@ -138,6 +138,29 @@ namespace top_down_shooter
             {
                 worldOffset = new Vector2(worldOffset.X, worldOffset.Y - user.hero.speed * 2);
             }
+        }
+
+        public virtual void LoadData(int LEVEL)
+        {
+            XDocument xml = XDocument.Load("XML/Levels/Level"+LEVEL+".xml");
+
+            XElement tempElement = null;
+
+            if (xml.Element("Root").Element("User") != null)
+            {
+                tempElement = xml.Element("Root").Element("User");
+            }
+
+            user = new User(1, tempElement);
+
+            tempElement = null;
+
+            if (xml.Element("Root").Element("AIPlayer") != null)
+            {
+                tempElement = xml.Element("Root").Element("AIPlayer");
+            }
+
+            aiPlayer = new AIPlayer(2, tempElement);
         }
 
         public virtual void Draw(Vector2 MAIN_OFFSET)

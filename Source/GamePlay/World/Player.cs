@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 using Microsoft.Xna.Framework;
 
 namespace top_down_shooter
@@ -13,9 +15,11 @@ namespace top_down_shooter
         public List<SpawnPoint> spawnPoints = new List<SpawnPoint>();
         public List<Building> buildings = new List<Building>();
 
-        public Player(int ID)
+        public Player(int ID, XElement DATA)
         {
             id = ID;
+
+            LoadData(DATA);
         }
 
         public virtual void Update(Player ENEMY, Vector2 OFFSET)
@@ -97,6 +101,29 @@ namespace top_down_shooter
             tempObjects.AddRange(buildings.ToList<AttackableObject>());
 
             return tempObjects;
+        }
+
+        public virtual void LoadData(XElement DATA)
+        {
+            List<XElement> spawnList = (from typeMatch in DATA.Descendants("SpawnPoint") select typeMatch).ToList<XElement>();
+
+            for (int i = 0; i < spawnList.Count; i++)
+            {
+                spawnPoints.Add(new Portal(new Vector2(Convert.ToInt32(spawnList[i].Element("Pos").Element("x").Value, Globals.culture), Convert.ToInt32(spawnList[i].Element("Pos").Element("y").Value, Globals.culture)), id));
+                spawnPoints[spawnPoints.Count - 1].spawnTimer.AddToTimer(Convert.ToInt32(spawnList[i].Element("timerAdd").Value, Globals.culture));
+            }
+
+            List<XElement> buildingList = (from typeMatch in DATA.Descendants("Building") select typeMatch).ToList<XElement>();
+
+            for (int i = 0; i < buildingList.Count; i++)
+            {
+                buildings.Add(new Tower(new Vector2(Convert.ToInt32(buildingList[i].Element("Pos").Element("x").Value, Globals.culture), Convert.ToInt32(buildingList[i].Element("Pos").Element("y").Value, Globals.culture)), id));
+            }
+
+            if (DATA.Element("Hero") != null)
+            {
+                hero = new Hero("2d/Hero", new Vector2(Convert.ToInt32(DATA.Element("Hero").Element("Pos").Element("x").Value, Globals.culture), Convert.ToInt32(DATA.Element("Hero").Element("Pos").Element("y").Value, Globals.culture)), new Vector2(64, 64), id);
+            }
         }
 
         public virtual void Draw(Vector2 OFFSET)
