@@ -176,7 +176,8 @@
 
 #begin 2d/Shaders/NormalFlat.fx
 /importer:EffectImporter
-/processor:PassThroughProcessor
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
 /build:2d/Shaders/NormalFlat.fx
 
 #begin 2d/SpawnPoints/EggSac.png

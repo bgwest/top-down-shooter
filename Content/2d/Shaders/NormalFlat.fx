@@ -69,6 +69,8 @@ technique Technique1
 {
     pass Pass1
     {
-        PixelShader = compile ps_4_0_level_9_1 PixelShaderFunction();
+        // TODO: Solve getting shader to compile at ps_4_0
+        //PixelShader = compile ps_4_0_level_9_1 PixelShaderFunction();
+        PixelShader = compile ps_3_0 PixelShaderFunction();
     }
 }
