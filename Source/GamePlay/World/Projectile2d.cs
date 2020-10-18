@@ -28,10 +28,10 @@ namespace top_down_shooter
 
             rotation = Globals.RotateTowards(position, new Vector2(TARGET.X, TARGET.Y));
 
-            timer = new McTimer(1200);
+            timer = new McTimer(1500);
         }
 
-        public virtual void Update(Vector2 OFFSET, List<Unit> UNITS)
+        public virtual void Update(Vector2 OFFSET, List<AttackableObject> ATTACKABLE_OBJECTS)
         {
             position += direction * speed;
 
@@ -42,20 +42,21 @@ namespace top_down_shooter
                 done = true;
             }
 
-            if (HitSomething(UNITS))
+            if (HitSomething(ATTACKABLE_OBJECTS))
             {
                 done = true;
             }
         }
 
-        public virtual bool HitSomething(List<Unit> UNITS)
+        public virtual bool HitSomething(List<AttackableObject> ATTACKABLE_OBJECTS)
         {
-            for (int i = 0; i < UNITS.Count; i++)
+            for (int i = 0; i < ATTACKABLE_OBJECTS.Count; i++)
             {
-                if (Globals.GetDistance(position, UNITS[i].position) < UNITS[i].hitDist)
+                // if this were a "ball of healing" could change to == to only heal things that are on your team!
+                if (owner.ownerId != ATTACKABLE_OBJECTS[i].ownerId && Globals.GetDistance(position, ATTACKABLE_OBJECTS[i].position) < ATTACKABLE_OBJECTS[i].hitDist)
                 {
                     // 1 damage is good enough for now
-                    UNITS[i].GetHit(1);
+                    ATTACKABLE_OBJECTS[i].GetHit(1);
                     return true;
                 }
             }

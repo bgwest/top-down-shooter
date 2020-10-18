@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Xna.Framework;
 
 namespace top_down_shooter
@@ -10,6 +11,7 @@ namespace top_down_shooter
         public Hero hero;
         public List<Unit> units = new List<Unit>();
         public List<SpawnPoint> spawnPoints = new List<SpawnPoint>();
+        public List<Building> buildings = new List<Building>();
 
         public Player(int ID)
         {
@@ -48,6 +50,17 @@ namespace top_down_shooter
                 }
             }
 
+            for (int i = 0; i < buildings.Count; i++)
+            {
+                buildings[i].Update(OFFSET, ENEMY);
+
+                if (buildings[i].dead)
+                {
+                    buildings.RemoveAt(i);
+                    i--;
+                }
+            }
+
         }
 
         public virtual void AddUnit(object INFO)
@@ -75,6 +88,17 @@ namespace top_down_shooter
 
         }
 
+        public virtual List<AttackableObject> GetAllAttackableObjects() {
+            // if we start using this to be called more than once per frame, consider moing this up higher
+            List<AttackableObject> tempObjects = new List<AttackableObject>();
+
+            tempObjects.AddRange(units.ToList<AttackableObject>());
+            tempObjects.AddRange(spawnPoints.ToList<AttackableObject>());
+            tempObjects.AddRange(buildings.ToList<AttackableObject>());
+
+            return tempObjects;
+        }
+
         public virtual void Draw(Vector2 OFFSET)
         {
             if (hero != null)
@@ -85,6 +109,11 @@ namespace top_down_shooter
             for (int i = 0; i < units.Count; i++)
             {
                 units[i].Draw(OFFSET);
+            }
+
+            for (int i = 0; i < buildings.Count; i++)
+            {
+                buildings[i].Draw(OFFSET);
             }
 
             for (int i = 0; i < spawnPoints.Count; i++)

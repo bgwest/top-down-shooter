@@ -11,9 +11,9 @@ namespace top_down_shooter
 
         }
 
-        public override void Update(Vector2 OFFSET, List<Unit> UNITS)
+        public override void Update(Vector2 OFFSET, List<AttackableObject> ATTACKABLE_OBJECTS)
         {
-            base.Update(OFFSET, UNITS);
+            base.Update(OFFSET, ATTACKABLE_OBJECTS);
         }
 
         public override void Draw(Vector2 OFFSET)

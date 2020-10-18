@@ -12,20 +12,20 @@ namespace top_down_shooter
 
         public override void Update(Vector2 OFFSET, Player ENEMY)
         {
-            AI(ENEMY.hero);
+            AI(ENEMY);
 
             base.Update(OFFSET);
         }
 
-        public virtual void AI(Hero HERO)
+        public virtual void AI(Player ENEMY)
         {
-            position += Globals.RadialMovement(HERO.position, position, speed);
-            rotation = Globals.RotateTowards(position, HERO.position);
+            position += Globals.RadialMovement(ENEMY.hero.position, position, speed);
+            rotation = Globals.RotateTowards(position, ENEMY.hero.position);
 
             // bounding boxes will come later, good enough for now
-            if (Globals.GetDistance(position, HERO.position) < 15)
+            if (Globals.GetDistance(position, ENEMY.hero.position) < 15)
             {
-                HERO.GetHit(1);
+                ENEMY.hero.GetHit(1);
                 dead = true;
             }
         }
