@@ -34,5 +34,6 @@
     <Folder Include="Source\Engine\Output\" />
     <Folder Include="Source\GamePlay\World\Players\" />
     <Folder Include="Source\GamePlay\World\SpawnPoints\" />
+    <Folder Include="Source\GamePlay\World\Buildings\" />
   </ItemGroup>
 </Project>

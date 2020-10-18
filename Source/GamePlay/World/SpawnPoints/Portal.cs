@@ -8,6 +8,8 @@ namespace top_down_shooter
         public Portal(Vector2 POSITION, int OWNER_ID)
             :base("2d/SpawnPoints/Portal", POSITION, new Vector2(45,45), OWNER_ID)
         {
+            health = 15;
+            healthMax = health;
         }
 
         public override void Update(Vector2 OFFSET)

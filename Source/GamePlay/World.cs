@@ -12,6 +12,7 @@ namespace top_down_shooter
         public AIPlayer aiPlayer;
 
         public List<Projectile2d> projectiles = new List<Projectile2d>();
+        public List<AttackableObject> allObjects = new List<AttackableObject>();
 
         public Vector2 worldOffset;
 
@@ -37,8 +38,15 @@ namespace top_down_shooter
         public virtual void Update()
         {
 
-            if (!user.hero.dead)
+            if (!user.hero.dead && user.buildings.Count > 0)
             {
+                // this is not the most efficient way to do this, this is just a dirt way
+                // to get things going
+                // will be optomized as the needs arise/change
+                allObjects.Clear();
+                allObjects.AddRange(user.GetAllAttackableObjects());
+                allObjects.AddRange(aiPlayer.GetAllAttackableObjects());
+
                 user.Update(aiPlayer, worldOffset);
                 aiPlayer.Update(user, worldOffset);
 
@@ -46,7 +54,7 @@ namespace top_down_shooter
                 // in near future will be testing in projectile for this
                 for (int i = 0; i < projectiles.Count; i++)
                 {
-                    projectiles[i].Update(worldOffset, aiPlayer.units.ToList<Unit>());
+                    projectiles[i].Update(worldOffset, allObjects);
 
                     if (projectiles[i].done)
                     {
@@ -57,7 +65,8 @@ namespace top_down_shooter
             }
             else
             {
-                if (Globals.keyboard.GetPress("Enter"))
+                // eventually this can just be a bool like "lost"
+                if (Globals.keyboard.GetPress("Enter") && (user.hero.dead || user.buildings.Count <= 0))
                 {
                     PassResetWorld(null);
                 }
