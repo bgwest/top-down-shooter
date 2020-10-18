@@ -12,6 +12,7 @@
   <ItemGroup>
     <None Remove="Icon.ico" />
     <None Remove="Icon.bmp" />
+    <None Remove="Content\bin\DesktopGL\Content\2d\Effects\Normal.xnb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
@@ -26,6 +27,7 @@
   <ItemGroup>
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.0.1641" />
+    <PackageReference Include="InfinitespaceStudios.Pipeline" Version="1.0.9" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Source\" />
@@ -35,5 +37,19 @@
     <Folder Include="Source\GamePlay\World\Players\" />
     <Folder Include="Source\GamePlay\World\SpawnPoints\" />
     <Folder Include="Source\GamePlay\World\Buildings\" />
+    <Folder Include="Content\bin\DesktopGL\Content\2d\Effects\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Content\2d\Shaders\NormalFlat.fx">
+      <IncludeInPackage>false</IncludeInPackage>
+    </None>
+    <None Update="Content\bin\DesktopGL\Content\2d\Effects\Normal.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bin\DesktopGL\Content\2d\Effects\Normal.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>
