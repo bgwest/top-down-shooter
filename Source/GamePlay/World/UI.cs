@@ -5,12 +5,16 @@ namespace top_down_shooter
 {
     public class UI
     {
+        public Basic2d pauseOverlay;
+
         public SpriteFont font;
 
         public QuantityDisplayBar healthBar;
 
         public UI()
         {
+            pauseOverlay = new Basic2d("2d/misc/PauseOverlay", new Vector2(Globals.screenWidth / 2, Globals.screenHeight / 2), new Vector2(300, 300));
+
             font = Globals.content.Load<SpriteFont>("2d/Fonts/Arial16");
 
             // total width including the background of the bar
@@ -47,6 +51,11 @@ namespace top_down_shooter
                 tempString = "Press Enter to Restart";
                 stringDimensions = font.MeasureString(tempString);
                 Globals.spriteBatch.DrawString(font, tempString, new Vector2(Globals.screenWidth / 2 - stringDimensions.X / 2, Globals.screenHeight / 2), Color.Black);
+            }
+
+            if (GameGlobals.paused)
+            {
+                pauseOverlay.Draw(Vector2.Zero);
             }
         }
     }
