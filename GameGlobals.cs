@@ -2,11 +2,7 @@
 {
     public class GameGlobals
     {
-
-
-        public GameGlobals()
-        {
-        }
+        public static bool paused = false;
 
         public static int score = 0;
 

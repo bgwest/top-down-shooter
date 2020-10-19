@@ -28,6 +28,8 @@ namespace top_down_shooter
             GameGlobals.PassSpawnPoint = AddSpawnPoint;
             GameGlobals.CheckScroll = CheckScroll;
 
+            GameGlobals.paused = false;
+
             worldOffset = new Vector2(0, 0);
 
             LoadData(1);
@@ -38,7 +40,7 @@ namespace top_down_shooter
         public virtual void Update()
         {
 
-            if (!user.hero.dead && user.buildings.Count > 0)
+            if (!user.hero.dead && user.buildings.Count > 0 && !GameGlobals.paused)
             {
                 // this is not the most efficient way to do this, this is just a dirt way
                 // to get things going
@@ -70,6 +72,11 @@ namespace top_down_shooter
                 {
                     PassResetWorld(null);
                 }
+            }
+
+            if (Globals.keyboard.GetSinglePress("Space"))
+            {
+                GameGlobals.paused = !GameGlobals.paused;
             }
 
             // important for ui to be at the bottom

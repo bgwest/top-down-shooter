@@ -79,6 +79,15 @@ namespace top_down_shooter
 
             gamePlay.Draw();
 
+            // TODO: Shader needs to be re-processed in order to run on this version of monogame
+            //       uncomment and try running after-reprocessing
+            //Globals.normalEffect.Parameters["xSize"].SetValue((float)cursor.myModel.Bounds.Width);
+            //Globals.normalEffect.Parameters["ySize"].SetValue((float)cursor.myModel.Bounds.Height);
+            //Globals.normalEffect.Parameters["xDraw"].SetValue((float)((int)cursor.dimensions.X));
+            //Globals.normalEffect.Parameters["yDraw"].SetValue((float)((int)cursor.dimensions.Y));
+            //Globals.normalEffect.Parameters["filterColor"].SetValue(Color.White.ToVector4());
+            //Globals.normalEffect.CurrentTechnique.Passes[0].Apply();
+
             cursor.Draw(new Vector2 (Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y), new Vector2(0, 0), Color.White);
 
             Globals.spriteBatch.End();
