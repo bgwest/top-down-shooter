@@ -3,12 +3,14 @@ using Microsoft.Xna.Framework;
 
 namespace top_down_shooter
 {
-    public class Fireball : Projectile2d
+    public class Arrow : Projectile2d
     {
 
-        public Fireball(Vector2 POSITION, AttackableObject OWNER, Vector2 TARGET) : base("2d/Projectiles/Fireball", POSITION, new Vector2(20, 20), OWNER, TARGET)
+        public Arrow(Vector2 POSITION, AttackableObject OWNER, Vector2 TARGET) : base("2d/Projectiles/Arrow", POSITION, new Vector2(8, 20), OWNER, TARGET)
         {
+            speed = 10.0f;
 
+            timer = new McTimer(800);
         }
 
         public override void Update(Vector2 OFFSET, List<AttackableObject> ATTACKABLE_OBJECTS)

@@ -14,6 +14,18 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin 2d/Buildings/ArrowTower.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:2d/Buildings/ArrowTower.png
+
 #begin 2d/Buildings/Tower.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -28,10 +40,8 @@
 
 #begin 2d/Effects/NormalFlat.fx
 /importer:EffectImporter
-/processor:EffectProcessor
-/processorParam:DebugMode=Auto
-# can only be built by mgcb #
-#/build:2d/Effects/NormalFlat.fx#
+/processor:PassThroughProcessor
+/build:2d/Effects/NormalFlat.fx
 
 #begin 2d/Fonts/Arial16.spritefont
 /importer:FontDescriptionImporter
@@ -167,6 +177,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:2d/Projectiles/AcidBall.png
+
+#begin 2d/Projectiles/Arrow.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:2d/Projectiles/Arrow.png
 
 #begin 2d/Projectiles/Fireball.png
 /importer:TextureImporter

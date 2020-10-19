@@ -44,6 +44,12 @@ namespace top_down_shooter
                 checkScroll = true;
             }
 
+            if (Globals.keyboard.GetSinglePress("D1"))
+            {
+                // temporary placement right above hero -- will update in near future to be more robust
+                GameGlobals.PassBuilding(new ArrowTower(new Vector2(position.X, position.Y - 30), ownerId));
+            }
+
             if (checkScroll)
             {
                 GameGlobals.CheckScroll(position);
