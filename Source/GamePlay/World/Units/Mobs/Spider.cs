@@ -34,7 +34,7 @@ namespace top_down_shooter
 
         public virtual void SpawnEggSac()
         {
-            GameGlobals.PassSpawnPoint(new SpiderEggSac(new Vector2(position.X, position.Y), ownerId));
+            GameGlobals.PassSpawnPoint(new SpiderEggSac(new Vector2(position.X, position.Y), ownerId, null));
         }
 
         public override void Draw(Vector2 OFFSET)

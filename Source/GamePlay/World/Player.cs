@@ -118,9 +118,7 @@ namespace top_down_shooter
 
                 // Dynamic method: much more flexible but -can be- 2 to 3x more expensive if used poorly
                 // it is recommened to do it this way almost always, but may need to hardcode if use case is causing bad lag
-                spawnPoints.Add((SpawnPoint)(Activator.CreateInstance(sType, new Vector2(Convert.ToInt32(spawnList[i].Element("Pos").Element("x").Value, Globals.culture), Convert.ToInt32(spawnList[i].Element("Pos").Element("y").Value, Globals.culture)), id)));
-
-                spawnPoints[spawnPoints.Count - 1].spawnTimer.AddToTimer(Convert.ToInt32(spawnList[i].Element("timerAdd").Value, Globals.culture));
+                spawnPoints.Add((SpawnPoint)(Activator.CreateInstance(sType, new Vector2(Convert.ToInt32(spawnList[i].Element("Pos").Element("x").Value, Globals.culture), Convert.ToInt32(spawnList[i].Element("Pos").Element("y").Value, Globals.culture)), id, spawnList[i])));
             }
 
             List<XElement> buildingList = (from typeMatch in DATA.Descendants("Building") select typeMatch).ToList<XElement>();

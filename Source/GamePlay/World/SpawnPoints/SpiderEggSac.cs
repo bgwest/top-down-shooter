@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Xml.Linq;
+using Microsoft.Xna.Framework;
 
 namespace top_down_shooter
 {
@@ -6,8 +7,8 @@ namespace top_down_shooter
     {
         int maxSpawns, totalSpawns;
 
-        public SpiderEggSac(Vector2 POSITION, int OWNER_ID)
-            :base("2d/SpawnPoints/EggSac", POSITION, new Vector2(25,25), OWNER_ID)
+        public SpiderEggSac(Vector2 POSITION, int OWNER_ID, XElement DATA)
+            :base("2d/SpawnPoints/EggSac", POSITION, new Vector2(25,25), OWNER_ID, DATA)
         {
             totalSpawns = 0;
             maxSpawns = 3;
