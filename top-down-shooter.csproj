@@ -12,7 +12,6 @@
   <ItemGroup>
     <None Remove="Icon.ico" />
     <None Remove="Icon.bmp" />
-    <None Remove="Content\bin\DesktopGL\Content\2d\Effects\Normal.xnb" />
     <None Remove="XML\Levels\LevelOne.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -38,22 +37,10 @@
     <Folder Include="Source\GamePlay\World\Players\" />
     <Folder Include="Source\GamePlay\World\SpawnPoints\" />
     <Folder Include="Source\GamePlay\World\Buildings\" />
-    <Folder Include="Content\bin\DesktopGL\Content\2d\Effects\" />
     <Folder Include="XML\" />
     <Folder Include="XML\Levels\" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="Content\2d\Shaders\NormalFlat.fx">
-      <IncludeInPackage>false</IncludeInPackage>
-    </None>
-    <None Update="Content\bin\DesktopGL\Content\2d\Effects\Normal.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Content\bin\DesktopGL\Content\2d\Effects\Normal.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="XML\Levels\Level1.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
