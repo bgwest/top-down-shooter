@@ -11,11 +11,11 @@ namespace top_down_shooter
 
         public Vector2 direction;
 
-        public Unit owner;
+        public AttackableObject owner;
 
         public McTimer timer;
 
-        public Projectile2d(string PATH, Vector2 POSITION, Vector2 DIMENSIONS, Unit OWNER, Vector2 TARGET) : base(PATH, POSITION, DIMENSIONS)
+        public Projectile2d(string PATH, Vector2 POSITION, Vector2 DIMENSIONS, AttackableObject OWNER, Vector2 TARGET) : base(PATH, POSITION, DIMENSIONS)
         {
             done = false;
 
