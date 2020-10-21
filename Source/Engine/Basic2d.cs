@@ -26,6 +26,24 @@ namespace top_down_shooter
 
         }
 
+        public virtual bool Hover(Vector2 OFFSET)
+        {
+            return HoverImage(OFFSET);
+        }
+
+        public virtual bool HoverImage(Vector2 OFFSET)
+        {
+            Vector2 mousePosition = new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y);
+
+            // TODO: move these intro seperate variables for readability 
+            if (mousePosition.X >= (position.X + OFFSET.X) - dimensions.X / 2 && mousePosition.X <= (position.X + OFFSET.X) + dimensions.X / 2 && mousePosition.Y >= (position.Y + OFFSET.Y) - dimensions.Y / 2 && mousePosition.Y <= (position.Y + OFFSET.Y) + dimensions.Y / 2)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public virtual void Draw(Vector2 OFFSET)
         {
             if (myModel != null)

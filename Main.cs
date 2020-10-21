@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace top_down_shooter
 {
@@ -40,9 +41,7 @@ namespace top_down_shooter
 
             cursor = new Basic2d("2d/misc/CursorArrow", new Vector2(0, 0), new Vector2(28, 28));
 
-            // TODO: Shader needs to be re-processed in order to run on this version of monogame
-            //       uncomment and try running after-reprocessing
-            //Globals.normalEffect = Globals.content.Load<Effect>("2d/Effects/Normal");
+            Globals.normalEffect = Globals.content.Load<Effect>("2d/Effects/NormalFlat");
 
             Globals.keyboard = new McKeyboard();
             Globals.mouse = new McMouseControl();
@@ -69,24 +68,21 @@ namespace top_down_shooter
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Yellow);
+            GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Shader needs to be re-processed in order to run on this version of monogame
-            //       switch back to SpriteSortMode.Immediate after re-processing to try
             // if your not running a shader program, SpriteSortMode.Deferred is pretty much the best
-            // drawing all sprites immediately is slightly less efficient, but it allows us to test our anti-aliasing
-            Globals.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+            // drawing all sprites immediately is slightly less efficient, but it allows us to run our anti-aliasing
+            Globals.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
             gamePlay.Draw();
 
-            // TODO: Shader needs to be re-processed in order to run on this version of monogame
-            //       uncomment and try running after-reprocessing
-            //Globals.normalEffect.Parameters["xSize"].SetValue((float)cursor.myModel.Bounds.Width);
-            //Globals.normalEffect.Parameters["ySize"].SetValue((float)cursor.myModel.Bounds.Height);
-            //Globals.normalEffect.Parameters["xDraw"].SetValue((float)((int)cursor.dimensions.X));
-            //Globals.normalEffect.Parameters["yDraw"].SetValue((float)((int)cursor.dimensions.Y));
-            //Globals.normalEffect.Parameters["filterColor"].SetValue(Color.White.ToVector4());
-            //Globals.normalEffect.CurrentTechnique.Passes[0].Apply();
+
+            Globals.normalEffect.Parameters["xSize"].SetValue((float)cursor.myModel.Bounds.Width);
+            Globals.normalEffect.Parameters["ySize"].SetValue((float)cursor.myModel.Bounds.Height);
+            Globals.normalEffect.Parameters["xDraw"].SetValue((float)((int)cursor.dimensions.X));
+            Globals.normalEffect.Parameters["yDraw"].SetValue((float)((int)cursor.dimensions.Y));
+            Globals.normalEffect.Parameters["filterColor"].SetValue(Color.White.ToVector4());
+            Globals.normalEffect.CurrentTechnique.Passes[0].Apply();
 
             cursor.Draw(new Vector2 (Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y), new Vector2(0, 0), Color.White);
 

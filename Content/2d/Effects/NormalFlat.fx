@@ -1,5 +1,7 @@
 // Our texture sampler
 
+//#define FLAGS_DX11    (D3DCOMPILE_ENABLE_BACKWARDS_COMPATIBILITY)
+
 float xSize;
 float ySize;
 float xDraw;
@@ -17,7 +19,7 @@ sampler TextureSampler = sampler_state
 // This data comes from the sprite batch vertex shader
 struct VertexShaderOutput
 {
-    float4 Position : SV_POSITION;
+  float4 Position : SV_POSITION;
 	float4 Color : COLOR0;
 	float2 TextureCordinate : TEXCOORD0;
 };
@@ -61,7 +63,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR
 
 
 
-	return color * filterColor;
+	return color * filterColor * input.Color;
 }
 
 // Compile our shader
@@ -70,7 +72,7 @@ technique Technique1
     pass Pass1
     {
         // TODO: Solve getting shader to compile at ps_4_0
-        //PixelShader = compile ps_4_0_level_9_1 PixelShaderFunction();
+        // PixelShader = compile ps_4_0_level_9_1 PixelShaderFunction();
         PixelShader = compile ps_3_0 PixelShaderFunction();
     }
 }

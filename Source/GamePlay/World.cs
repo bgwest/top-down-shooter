@@ -34,7 +34,7 @@ namespace top_down_shooter
 
             LoadData(1);
 
-            ui = new UI();
+            ui = new UI(PassResetWorld);
         }
 
         public virtual void Update()
