@@ -40,7 +40,8 @@
 
 #begin 2d/Effects/NormalFlat.fx
 /importer:EffectImporter
-/processor:PassThroughProcessor
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
 /build:2d/Effects/NormalFlat.fx
 
 #begin 2d/Fonts/Arial16.spritefont
@@ -165,6 +166,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:2d/misc/shade.png
+
+#begin 2d/misc/SimpleBtn.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:2d/misc/SimpleBtn.png
 
 #begin 2d/misc/solid.png
 /importer:TextureImporter

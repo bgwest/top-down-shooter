@@ -23,9 +23,7 @@ namespace top_down_shooter
         // it's very expensive to open and close sprite batches so important to think that through
         public static SpriteBatch spriteBatch;
 
-        // TODO: Shader needs to be re-processed in order to run on this version of monogame
-        //       uncomment and try running after-reprocessing
-        //public static Effect normalEffect;
+        public static Effect normalEffect;
 
         public static McKeyboard keyboard;
         public static McMouseControl mouse;
