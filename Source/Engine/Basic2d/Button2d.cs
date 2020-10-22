@@ -19,6 +19,7 @@ namespace top_down_shooter
         public Button2d(string PATH, Vector2 POSITION, Vector2 DIMENSIONS, string FONTPATH, string TEXT, PassObject BUTTON_CLICKED, object INFO)
             :base(PATH, POSITION, DIMENSIONS)
         {
+            info = INFO;
             text = TEXT;
             ButtonClicked = BUTTON_CLICKED;
 

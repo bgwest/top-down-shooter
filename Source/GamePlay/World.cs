@@ -16,11 +16,12 @@ namespace top_down_shooter
 
         public Vector2 worldOffset;
 
-        PassObject PassResetWorld;
+        PassObject PassResetWorld, ChangeGameState;
 
-        public World(PassObject RESET_WORLD)
+        public World(PassObject RESET_WORLD, PassObject CHANGE_GAME_STATE)
         {
             PassResetWorld = RESET_WORLD;
+            ChangeGameState = CHANGE_GAME_STATE;
 
             GameGlobals.PassProjectile = AddProjectile;
             GameGlobals.PassMob = AddMob;
@@ -72,6 +73,12 @@ namespace top_down_shooter
                 {
                     PassResetWorld(null);
                 }
+            }
+
+            if (Globals.keyboard.GetSinglePress("Back"))
+            {
+                PassResetWorld(null);
+                ChangeGameState(0);
             }
 
             if (Globals.keyboard.GetSinglePress("Space"))

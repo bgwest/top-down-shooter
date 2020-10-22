@@ -9,9 +9,13 @@ namespace top_down_shooter
 
         World world;
 
-        public GamePlay()
+        PassObject ChangeGameState;
+
+        public GamePlay(PassObject CHANGE_GAME_STATE)
         {
             playState = 0;
+
+            ChangeGameState = CHANGE_GAME_STATE;
 
             ResetWorld(null);
         }
@@ -26,7 +30,7 @@ namespace top_down_shooter
 
         public virtual void ResetWorld(object INFO)
         {
-            world = new World(ResetWorld);
+            world = new World(ResetWorld, ChangeGameState);
         }
 
         public virtual void Draw()

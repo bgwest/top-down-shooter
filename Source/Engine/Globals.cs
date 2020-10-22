@@ -10,7 +10,7 @@ namespace top_down_shooter
 
     public class Globals
     {
-        public static int screenHeight, screenWidth;
+        public static int screenHeight, screenWidth, gameState = 0;
 
         public static Random random = new Random();
 

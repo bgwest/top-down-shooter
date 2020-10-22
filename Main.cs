@@ -10,6 +10,7 @@ namespace top_down_shooter
         private GraphicsDeviceManager _graphics;
 
         GamePlay gamePlay;
+        MainMenu mainMenu;
 
         Basic2d cursor;
 
@@ -46,7 +47,8 @@ namespace top_down_shooter
             Globals.keyboard = new McKeyboard();
             Globals.mouse = new McMouseControl();
 
-            gamePlay = new GamePlay();
+            mainMenu = new MainMenu(ChangeGameState, ExitGame);
+            gamePlay = new GamePlay(ChangeGameState);
         }
 
         protected override void Update(GameTime gameTime)
@@ -58,12 +60,33 @@ namespace top_down_shooter
             Globals.keyboard.Update();
             Globals.mouse.Update();
 
+            if (Globals.gameState == 0)
+            {
+                mainMenu.Update();
+            }
+            else if (Globals.gameState == 1)
+            {
+                gamePlay.Update();
+            }
+
             gamePlay.Update();
 
             Globals.keyboard.UpdateOld();
             Globals.mouse.UpdateOld();
 
             base.Update(gameTime);
+        }
+
+        public virtual void ChangeGameState(object INFO) {
+            Globals.gameState = Convert.ToInt32(INFO, Globals.culture);
+        }
+
+        public virtual void ExitGame(object INFO)
+        {
+            // theres about 5 different ways to close your game...
+            // there may be a reason to conditionally use other exit variations
+            // this one seems to be the most supported across systems / OSs
+            Environment.Exit(0);
         }
 
         protected override void Draw(GameTime gameTime)
@@ -74,8 +97,14 @@ namespace top_down_shooter
             // drawing all sprites immediately is slightly less efficient, but it allows us to run our anti-aliasing
             Globals.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
-            gamePlay.Draw();
-
+            if (Globals.gameState == 0)
+            {
+                mainMenu.Draw();
+            }
+            else if (Globals.gameState == 1)
+            {
+                gamePlay.Draw();
+            }
 
             Globals.normalEffect.Parameters["xSize"].SetValue((float)cursor.myModel.Bounds.Width);
             Globals.normalEffect.Parameters["ySize"].SetValue((float)cursor.myModel.Bounds.Height);
