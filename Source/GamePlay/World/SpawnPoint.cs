@@ -12,8 +12,8 @@ namespace top_down_shooter
 
         public McTimer spawnTimer = new McTimer(2400);
 
-        public SpawnPoint(string PATH, Vector2 POSITION, Vector2 DIMENSIONS, int OWNER_ID, XElement DATA)
-            :base(PATH, POSITION, DIMENSIONS, OWNER_ID)
+        public SpawnPoint(string PATH, Vector2 POSITION, Vector2 DIMENSIONS, Vector2 FRAMES, int OWNER_ID, XElement DATA)
+            :base(PATH, POSITION, DIMENSIONS, FRAMES, OWNER_ID)
         {
             dead = false;
 
@@ -55,7 +55,7 @@ namespace top_down_shooter
 
         public virtual void SpawnMob()
         {
-            GameGlobals.PassMob(new Imp(new Vector2(position.X, position.Y), ownerId));
+            GameGlobals.PassMob(new Imp(new Vector2(position.X, position.Y), new Vector2(1,1), ownerId));
         }
 
         public override void Draw(Vector2 OFFSET)

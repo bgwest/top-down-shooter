@@ -4,8 +4,8 @@ namespace top_down_shooter
 {
     public class Tower : Building
     {
-        public Tower(Vector2 POSITION, int OWNER_ID)
-            :base("2d/Buildings/Tower", POSITION, new Vector2(50, 50), OWNER_ID)
+        public Tower(Vector2 POSITION, Vector2 FRAMES, int OWNER_ID)
+            :base("2d/Buildings/Tower", POSITION, new Vector2(50, 50), FRAMES, OWNER_ID)
         {
             health = 20;
             healthMax = health;

@@ -7,7 +7,8 @@ namespace top_down_shooter
     {
         public float rotation;
 
-        public Vector2 position, dimensions;
+        // frameSize is import for zooming... eventually
+        public Vector2 position, dimensions, frameSize;
 
         public Texture2D myModel;
 
@@ -15,8 +16,9 @@ namespace top_down_shooter
 
         public Basic2d(string PATH, Vector2 POSITION, Vector2 DIMENSIONS)
         {
-            position = POSITION;
-            dimensions = DIMENSIONS;
+            position = new Vector2(POSITION.X, POSITION.Y);
+            dimensions = new Vector2(DIMENSIONS.X, DIMENSIONS.Y);
+            rotation = 0.0F;
 
             myModel = Globals.content.Load<Texture2D>(PATH);
         }

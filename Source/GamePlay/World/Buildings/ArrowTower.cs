@@ -8,8 +8,8 @@ namespace top_down_shooter
 
         McTimer shotTimer = new McTimer(1200);
 
-        public ArrowTower(Vector2 POSITION, int OWNER_ID)
-            :base("2d/Buildings/ArrowTower", POSITION, new Vector2(50, 50), OWNER_ID)
+        public ArrowTower(Vector2 POSITION, Vector2 FRAMES, int OWNER_ID)
+            :base("2d/Buildings/ArrowTower", POSITION, new Vector2(50, 50), FRAMES, OWNER_ID)
         {
             range = 220;
 

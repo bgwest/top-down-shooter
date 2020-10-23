@@ -4,8 +4,8 @@ namespace top_down_shooter
 {
     public class Building : AttackableObject
     {
-        public Building(string PATH, Vector2 POSITION, Vector2 DIMENSIONS, int OWNER_ID)
-            :base(PATH, POSITION, DIMENSIONS, OWNER_ID)
+        public Building(string PATH, Vector2 POSITION, Vector2 DIMENSIONS, Vector2 FRAMES, int OWNER_ID)
+            :base(PATH, POSITION, DIMENSIONS, FRAMES, OWNER_ID)
         {
         }
 

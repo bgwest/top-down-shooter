@@ -4,13 +4,18 @@ namespace top_down_shooter
 {
     public class Hero : Unit
     {
-        public Hero(string PATH, Vector2 POSITION, Vector2 DIMENSIONS, int OWNER_ID)
-            :base(PATH, POSITION, DIMENSIONS, OWNER_ID)
+        public Hero(string PATH, Vector2 POSITION, Vector2 DIMENSIONS, Vector2 FRAMES, int OWNER_ID)
+            :base(PATH, POSITION, DIMENSIONS, FRAMES, OWNER_ID)
         {
             speed = 2.0f;
 
             health = 5;
             healthMax = health;
+
+            frameAnimations = true;
+            currentAnimation = 0;
+            frameAnimationList.Add(new FrameAnimation(new Vector2(frameSize.X, frameSize.Y), frames, new Vector2(0, 0), 4, 133, 0, "Walk"));
+            frameAnimationList.Add(new FrameAnimation(new Vector2(frameSize.X, frameSize.Y), frames, new Vector2(0, 0), 1, 133, 0, "Stand"));
         }
 
         public override void Update(Vector2 OFFSET)
@@ -47,12 +52,18 @@ namespace top_down_shooter
             if (Globals.keyboard.GetSinglePress("D1"))
             {
                 // temporary placement right above hero -- will update in near future to be more robust
-                GameGlobals.PassBuilding(new ArrowTower(new Vector2(position.X, position.Y - 30), ownerId));
+                GameGlobals.PassBuilding(new ArrowTower(new Vector2(position.X, position.Y - 30), new Vector2(1,1), ownerId));
             }
 
             if (checkScroll)
             {
                 GameGlobals.CheckScroll(position);
+
+                SetAnimationByName("Walk");
+            }
+            else
+            {
+                SetAnimationByName("Stand");
             }
 
             // rotate hero towards the mouse
