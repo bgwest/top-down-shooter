@@ -60,11 +60,11 @@ namespace top_down_shooter
             Globals.keyboard.Update();
             Globals.mouse.Update();
 
-            if (Globals.gameState == 0)
+            if (Globals.gameState == (int)GameStates.MainMenu)
             {
                 mainMenu.Update();
             }
-            else if (Globals.gameState == 1)
+            else if (Globals.gameState == (int)GameStates.GamePlay)
             {
                 gamePlay.Update();
             }
@@ -97,14 +97,19 @@ namespace top_down_shooter
             // drawing all sprites immediately is slightly less efficient, but it allows us to run our anti-aliasing
             Globals.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
-            if (Globals.gameState == 0)
+            // TODO: Enabling this block enables the main menu system to work, but pause is broken
+            // and the mobs are twice as fast...
+            if (Globals.gameState == (int)GameStates.MainMenu)
             {
                 mainMenu.Draw();
             }
-            else if (Globals.gameState == 1)
+            else if (Globals.gameState == (int)GameStates.GamePlay)
             {
                 gamePlay.Draw();
             }
+
+            // Enabling just this draw allows pause to work
+            //gamePlay.Draw();
 
             Globals.normalEffect.Parameters["xSize"].SetValue((float)cursor.myModel.Bounds.Width);
             Globals.normalEffect.Parameters["ySize"].SetValue((float)cursor.myModel.Bounds.Height);

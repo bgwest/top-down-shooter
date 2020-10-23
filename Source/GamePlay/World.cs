@@ -78,7 +78,7 @@ namespace top_down_shooter
             if (Globals.keyboard.GetSinglePress("Back"))
             {
                 PassResetWorld(null);
-                ChangeGameState(0);
+                ChangeGameState((int)GameStates.MainMenu);
             }
 
             if (Globals.keyboard.GetSinglePress("Space"))
