@@ -12,7 +12,6 @@ namespace top_down_shooter
     {
         MainMenu = 0,
         GamePlay = 1,
-        Paused = 2,
     }
 
     public class Globals
