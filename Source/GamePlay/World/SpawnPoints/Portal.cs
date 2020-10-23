@@ -7,8 +7,8 @@ namespace top_down_shooter
     public class Portal : SpawnPoint
     {
 
-        public Portal(Vector2 POSITION, int OWNER_ID, XElement DATA)
-            :base("2d/SpawnPoints/Portal", POSITION, new Vector2(45,45), OWNER_ID, DATA)
+        public Portal(Vector2 POSITION, Vector2 FRAMES, int OWNER_ID, XElement DATA)
+            :base("2d/SpawnPoints/Portal", POSITION, new Vector2(45,45), FRAMES, OWNER_ID, DATA)
         {
             health = 15;
             healthMax = health;
@@ -35,7 +35,8 @@ namespace top_down_shooter
                 {
                     Type sType = Type.GetType("top_down_shooter." + mobChoices[i].mobString, true);
 
-                    tempMob = (Mob)(Activator.CreateInstance(sType, new Vector2(position.X, position.Y), ownerId));
+                    // Note: The activator classes do not find changes in variable/params... just a helpful reminder when building!
+                    tempMob = (Mob)(Activator.CreateInstance(sType, new Vector2(position.X, position.Y), new Vector2(1, 1), ownerId));
 
                     break;
                 }

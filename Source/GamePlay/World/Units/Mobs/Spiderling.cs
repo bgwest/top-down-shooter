@@ -6,8 +6,8 @@ namespace top_down_shooter
     {
         public McTimer spawnTimer;
 
-        public Spiderling(Vector2 POSITION, int OWNER_ID)
-            :base("2d/Units/Mobs/Spider", POSITION, new Vector2(25, 25), OWNER_ID)
+        public Spiderling(Vector2 POSITION, Vector2 FRAMES, int OWNER_ID)
+            :base("2d/Units/Mobs/Spider", POSITION, new Vector2(25, 25), FRAMES, OWNER_ID)
         {
             speed = 1.0f;
         }

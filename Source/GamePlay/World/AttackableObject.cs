@@ -2,7 +2,7 @@
 
 namespace top_down_shooter
 {
-    public class AttackableObject : Basic2d
+    public class AttackableObject : Animated2d
     {
         public bool dead;
 
@@ -10,8 +10,8 @@ namespace top_down_shooter
 
         public float speed, hitDist, health, healthMax;
 
-        public AttackableObject(string PATH, Vector2 POSITION, Vector2 DIMENSIONS, int OWNER_ID)
-            :base(PATH, POSITION, DIMENSIONS)
+        public AttackableObject(string PATH, Vector2 POSITION, Vector2 DIMENSIONS, Vector2 FRAMES, int OWNER_ID)
+            :base(PATH, POSITION, DIMENSIONS, FRAMES, Color.White)
         {
             ownerId = OWNER_ID;
             dead = false;

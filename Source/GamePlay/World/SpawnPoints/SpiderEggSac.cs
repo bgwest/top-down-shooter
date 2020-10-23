@@ -7,8 +7,8 @@ namespace top_down_shooter
     {
         int maxSpawns, totalSpawns;
 
-        public SpiderEggSac(Vector2 POSITION, int OWNER_ID, XElement DATA)
-            :base("2d/SpawnPoints/EggSac", POSITION, new Vector2(25,25), OWNER_ID, DATA)
+        public SpiderEggSac(Vector2 POSITION, Vector2 FRAMES, int OWNER_ID, XElement DATA)
+            :base("2d/SpawnPoints/EggSac", POSITION, new Vector2(25,25), FRAMES, OWNER_ID, DATA)
         {
             totalSpawns = 0;
             maxSpawns = 3;
@@ -26,7 +26,7 @@ namespace top_down_shooter
 
         public override void SpawnMob()
         {
-            Mob tempMob = new Spiderling(new Vector2(position.X, position.Y), ownerId);
+            Mob tempMob = new Spiderling(new Vector2(position.X, position.Y), new Vector2(1, 1), ownerId);
 
             if (tempMob != null)
             {

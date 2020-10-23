@@ -6,8 +6,8 @@ namespace top_down_shooter
     {
         public McTimer spawnTimer;
 
-        public Spider(Vector2 POSITION, int OWNER_ID)
-            :base("2d/Units/Mobs/Spider", POSITION, new Vector2(45, 45), OWNER_ID)
+        public Spider(Vector2 POSITION, Vector2 FRAMES, int OWNER_ID)
+            :base("2d/Units/Mobs/Spider", POSITION, new Vector2(45, 45), FRAMES, OWNER_ID)
         {
             speed = 1.5f;
 
@@ -34,7 +34,7 @@ namespace top_down_shooter
 
         public virtual void SpawnEggSac()
         {
-            GameGlobals.PassSpawnPoint(new SpiderEggSac(new Vector2(position.X, position.Y), ownerId, null));
+            GameGlobals.PassSpawnPoint(new SpiderEggSac(new Vector2(position.X, position.Y), new Vector2(1, 1), ownerId, null));
         }
 
         public override void Draw(Vector2 OFFSET)
