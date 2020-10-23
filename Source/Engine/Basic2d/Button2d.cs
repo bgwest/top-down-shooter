@@ -19,6 +19,7 @@ namespace top_down_shooter
         public Button2d(string PATH, Vector2 POSITION, Vector2 DIMENSIONS, string FONTPATH, string TEXT, PassObject BUTTON_CLICKED, object INFO)
             :base(PATH, POSITION, DIMENSIONS)
         {
+            info = INFO;
             text = TEXT;
             ButtonClicked = BUTTON_CLICKED;
 
@@ -76,7 +77,6 @@ namespace top_down_shooter
         public override void Draw(Vector2 OFFSET)
         {
             Color tempColor = Color.White;
-            Color textColor = Color.Gray;
 
             if (isPressed)
             {
@@ -85,7 +85,6 @@ namespace top_down_shooter
             else if (isHovered)
             {
                 tempColor = hoverColor;
-                textColor = hoverColor;
             }
 
             Globals.normalEffect.Parameters["xSize"].SetValue((float)myModel.Bounds.Width);

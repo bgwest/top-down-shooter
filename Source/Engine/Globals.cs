@@ -8,9 +8,15 @@ namespace top_down_shooter
     public delegate void PassObject(object i);
     public delegate object PassObjectAndReturn(object i);
 
+    public enum GameStates
+    {
+        MainMenu = 0,
+        GamePlay = 1,
+    }
+
     public class Globals
     {
-        public static int screenHeight, screenWidth;
+        public static int screenHeight, screenWidth, gameState = (int)GameStates.MainMenu;
 
         public static Random random = new Random();
 
