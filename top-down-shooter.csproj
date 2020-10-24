@@ -41,6 +41,8 @@
     <Folder Include="XML\Levels\" />
     <Folder Include="Source\Engine\Basic2d\" />
     <Folder Include="Source\Engine\Basic2d\Animated2d\" />
+    <Folder Include="Source\Engine\DataTypes\" />
+    <Folder Include="Source\Engine\DataTypes\Grids\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="XML\Levels\Level1.xml">

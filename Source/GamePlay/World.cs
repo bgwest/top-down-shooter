@@ -11,6 +11,8 @@ namespace top_down_shooter
         public User user;
         public AIPlayer aiPlayer;
 
+        public SquareGrid grid;
+
         public List<Projectile2d> projectiles = new List<Projectile2d>();
         public List<AttackableObject> allObjects = new List<AttackableObject>();
 
@@ -34,6 +36,8 @@ namespace top_down_shooter
             worldOffset = new Vector2(0, 0);
 
             LoadData(1);
+
+            grid = new SquareGrid(new Vector2(25,25), new Vector2(-100, -100), new Vector2(Globals.screenWidth + 200, Globals.screenHeight + 200));
 
             ui = new UI(PassResetWorld);
         }
@@ -75,6 +79,11 @@ namespace top_down_shooter
                 }
             }
 
+            if (grid != null)
+            {
+                grid.Update(worldOffset);
+            }
+
             if (Globals.keyboard.GetSinglePress("Back"))
             {
                 PassResetWorld(null);
@@ -84,6 +93,11 @@ namespace top_down_shooter
             if (Globals.keyboard.GetSinglePress("Space"))
             {
                 GameGlobals.paused = !GameGlobals.paused;
+            }
+
+            if (Globals.keyboard.GetSinglePress("G"))
+            {
+                grid.showGrid = !grid.showGrid;
             }
 
             // important for ui to be at the bottom
@@ -191,6 +205,8 @@ namespace top_down_shooter
 
         public virtual void Draw(Vector2 MAIN_OFFSET)
         {
+            grid.DrawGrid(worldOffset);
+
             user.Draw(worldOffset);
             aiPlayer.Draw(worldOffset);
 
